@@ -14,6 +14,11 @@ license = {text = "MIT"}
 [tool.pdm]
 distribution = false
 
+[tool.pdm.scripts]
+plagiarism-checker = "src/plagiarism_checker/main.py"
+pc = "src/plagiarism_checker/main.py"
+test = "pytest"
+
 [tool.pdm.dev-dependencies]
 dev = [
     "pytest>=8.1.1",
