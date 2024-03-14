@@ -12,9 +12,10 @@ parser.add_argument('output_file', type=argparse.FileType('w',encoding='utf-8'),
 
 def output_result(output_file:TextIOWrapper, result:float):
     '''输出结果到文件和控制台'''
-    print(result)
+    output = round(result,2)
+    print(output)
     try:
-        output_file.write(str(result))
+        output_file.write(str(output))
     except Exception as e:
         print(e)
         print("输出文件失败")
