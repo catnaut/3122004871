@@ -1,8 +1,7 @@
-from plagiarism_checker.main import parser
+from main import parser
 
 # from pytest import mocker
 import sys
-import pathlib
 from io import TextIOWrapper
 
 
