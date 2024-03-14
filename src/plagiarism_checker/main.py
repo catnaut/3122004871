@@ -9,10 +9,7 @@ parser.add_argument('check_file',type=argparse.FileType('r',encoding='utf-8'),he
 parser.add_argument('output_file', type=argparse.FileType('w',encoding='utf-8'), help='输出文件路径')
 
 
-
-
-
-if __name__ == "__main__":
+def main():
     try:
         args = parser.parse_args()
         # print(args)
@@ -30,3 +27,7 @@ if __name__ == "__main__":
     tf_idf = checker.cal_tf_idf(texts)
     similarity_matrix = checker.cosine_similarity(tf_idf)
     print(similarity_matrix[0][1])
+
+
+if __name__ == "__main__":
+    main()
