@@ -2,6 +2,19 @@
 
 由 Python 实现的简易查重软件
 
+## Usage
+
+```python
+pdm install
+# 开发者模式，安装单元测试，性能分析依赖
+pdm install -d
+
+# 测试
+pdm test
+# 快速开启软件
+pdm pc
+```
+
 ## PSP
 
 | **PSP2.1**                              | **Personal Software Process Stages**    | **预估耗时（分钟）** | **实际耗时（分钟）** |
