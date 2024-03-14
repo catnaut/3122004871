@@ -1,6 +1,4 @@
 from main import parser
-
-# from pytest import mocker
 import sys
 from io import TextIOWrapper
 
