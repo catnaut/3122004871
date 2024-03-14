@@ -1,6 +1,7 @@
 import argparse
 import checker,pre
 import time
+from io import TextIOWrapper
 
 parser = argparse.ArgumentParser(description="simple python plagiarism checker")
 
@@ -8,6 +9,15 @@ parser.add_argument('origin_file', type=argparse.FileType('r',encoding='utf-8'),
 parser.add_argument('check_file',type=argparse.FileType('r',encoding='utf-8'),help='检查文件路径')
 parser.add_argument('output_file', type=argparse.FileType('w',encoding='utf-8'), help='输出文件路径')
 
+
+def output_result(output_file:TextIOWrapper, result:float):
+    '''输出结果到文件和控制台'''
+    print(result)
+    try:
+        output_file.write(str(result))
+    except Exception as e:
+        print(e)
+        print("输出文件失败")
 
 def main():
     try:
@@ -26,7 +36,8 @@ def main():
     texts = [pre.data_preprocessing(text) for text in texts]
     tf_idf = checker.cal_tf_idf(texts)
     similarity_matrix = checker.cosine_similarity(tf_idf)
-    print(similarity_matrix[0][1])
+    # print(similarity_matrix[0][1])
+    output_result(output,similarity_matrix[0][1])
 
 
 if __name__ == "__main__":
