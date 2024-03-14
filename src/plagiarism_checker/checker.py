@@ -8,10 +8,6 @@ def cal_tf_idf(texts: list):
     return tf_idf
 
 
-def get_vector():
-    pass
-
-
 def cal_cosine_similarity(vectors):
     similarity_matrix = cosine_similarity(vectors)
     return similarity_matrix
