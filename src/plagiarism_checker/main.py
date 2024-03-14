@@ -14,6 +14,10 @@ parser.add_argument(
 parser.add_argument(
     "output_file", type=argparse.FileType("w", encoding="utf-8"), help="输出文件路径"
 )
+parser.add_argument(
+    "--debug", action="store_true", help="开启性能分析"
+)
+
 
 
 def output_result(output_file: TextIOWrapper, result: float):
@@ -36,6 +40,11 @@ def main():
         print("error")
         print(e)
 
+    if args.debug:
+        from pyinstrument import Profiler
+        p = Profiler()
+        p.start()
+
     origin = args.origin_file.read()
     check = args.check_file.read()
     output = args.output_file
@@ -48,6 +57,11 @@ def main():
     # 输出结果
     output_result(output, similarity_matrix[0][1])
 
+    if args.debug:
+        p.stop()
+        p.output_html()
+        # p.output_text()
+        # p.open_in_browser()
 
 if __name__ == "__main__":
     main()
